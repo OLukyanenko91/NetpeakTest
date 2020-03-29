@@ -68,7 +68,8 @@ class ProfileTest(unittest.TestCase):
 
 
 def main():
-    unittest.main()
+    unittest.main(exit=False)
+    os.system("pause")
 
 
 if __name__ == "__main__":

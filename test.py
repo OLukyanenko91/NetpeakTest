@@ -9,7 +9,7 @@ HOME_URL = "https://netpeak.ua/"
 CAREER_URL = "https://career.netpeak.ua/"
 HIRING_URL = "https://career.netpeak.ua/hiring/"
 RED_COLOR = "rgba(255, 0, 0, 1)"
-SUBPROCESS_CMD = "FileUpload.exe {}\\picture.bmp"
+SUBPROCESS_CMD = "{}\\adds\\FileUpload.exe {}\\picture.bmp"
 DELAY = 5
 TIMEOUT = 10
 
@@ -17,7 +17,7 @@ TIMEOUT = 10
 class ProfileTest(unittest.TestCase):
     def setUp(self):
         self.path = os.path.abspath(os.getcwd())
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome('adds\\chromedriver.exe')
         self.driver.get(HOME_URL)
         time.sleep(DELAY)
 
@@ -55,7 +55,7 @@ class ProfileTest(unittest.TestCase):
     def __uploadFile(self):
         self.driver.find_element_by_id("upload").click()
         time.sleep(DELAY)
-        subprocess.call(SUBPROCESS_CMD.format(self.path))
+        subprocess.call(SUBPROCESS_CMD.format(self.path, self.path))
 
     def __fillPersonalData(self):
         self.driver.find_element_by_id("inputName").send_keys("test")
